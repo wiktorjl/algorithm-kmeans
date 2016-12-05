@@ -49,12 +49,8 @@ def recalcuate_centroids(clusters):
 
 def kmeans():
     data = read_data("data/geo_trimmed.dat")
-    clusters = defaultdict(list)
+    clusters = {key: [] for key in random.sample(data, 10)}
     old_centroids = []
-    new_centroids = random.sample(data, 10)
-
-    for c in new_centroids:
-        clusters[c] = []
 
     while not set(old_centroids) == set(clusters.keys()):
         clusters = assign_labels(clusters.keys(), data)
